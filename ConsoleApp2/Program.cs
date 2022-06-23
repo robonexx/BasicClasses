@@ -16,10 +16,23 @@ namespace BasicClasses
             myCar.Year = 1991;
             myCar.Color = "Black";
 
-            Console.WriteLine( "{0},{1},{2},{3}", myCar.Make, myCar.Model, myCar.Year, myCar.Color);
 
+            // make a new car with myCar properties / values
+            Car myOtherCar;
+            myOtherCar = myCar;
+                        
+
+           // Console.WriteLine( "{0},{1},{2},{3}", myCar.Make, myCar.Model, myCar.Year, myCar.Color);
+            Console.WriteLine("{0},{1},{2},{3}", myOtherCar.Make, myOtherCar.Model, myOtherCar.Year, myOtherCar.Color);
             // decimal value = DetermineMarketValue(myCar);
-            //
+
+
+            // Change the object properties, values color and year
+
+            myOtherCar.Year = 1986;
+            myOtherCar.Color = "Yellow";
+            Console.WriteLine("{0},{1},{2},{3}", myOtherCar.Make, myOtherCar.Model, myOtherCar.Year, myOtherCar.Color);
+
             Console.WriteLine("{0:C}", myCar.DetermineMarketValue());
             Console.ReadKey();
         }
