@@ -140,16 +140,21 @@ namespace Diagnos_1_Grund
                      
                     bilRegister.Add(nyBil);
 
+                    Console.WriteLine("\n\n\t\t Tryck på valfri knapp för att fortsätta");
                     Console.ReadKey();
 
                 }
+
+                // se bilar i registret, lista  med bilar
                 else if (användarVal == "2")
                 {
                   if(bilRegister.Count > 0)
                     {
                         foreach(Bil bil in bilRegister)
                         {
-                            Console.WriteLine("\n\t " + bil);
+                            Console.WriteLine("\n\t " + bil + "\n\n " 
+                                + "\n\t\t Tryck på valfri knapp för att fortsätta" );
+                            Console.ReadKey();
                         }
                     }
                     // om det ej finns bilar, skriver ut ett meddelande
@@ -192,6 +197,25 @@ namespace Diagnos_1_Grund
               + "\n\t 3) Alternativ 3 - Hämta bilar från register"
               + "\n\t 4) Alternativ 4 - Stäng program");
 
+        }
+
+        // from MDN and stack 
+        // get a letter a-ö, swedish alphabet
+        public static char GetLetter()
+        {
+            string chars = "abcdefghijklmnopqrstuvwxyz";
+            Random rand = new Random();
+            int num = rand.Next(0, chars.Length);
+            return chars.ToUpper()[num];
+        }
+
+        // get a random number from 0-9
+        public static char GetNumber()
+        {
+            string chars = "0123456789";
+            Random rand = new Random();
+            int num = rand.Next(0, chars.Length);
+            return chars[num];
         }
     }
 }
