@@ -71,22 +71,118 @@ namespace Diagnos_1_Grund
             List<Bil> bilRegister = new List<Bil>();
 
             // Meny för program
-            Meny();
-           
+            bool isActive = true;
+            while (isActive)
+            {
+                Meny();
+
+                string användarVal = Console.ReadLine();
+
+                if (användarVal == "1")
+                {
+                    Console.Clear();
+                    string registreringsNummer = "";                        // Initierar registreringsplåt, tillverkare och besiktad-variablerna
+                    string tillverkare = "";
+                    int årtal = 0;
+                    bool besiktad = false;
+
+                    Console.WriteLine("\n\t Registrera ny bil"
+                      + "\n\t Ange registrering 3 bokstäver A-Ö och 3 siffror 0-9 i följd");
+
+                    Console.Write("\t  ");
+                    registreringsNummer = Console.ReadLine().ToUpper();
+
+                    if (registreringsNummer.Length != 6 || registreringsNummer.Length == 0)
+                    {
+                        Console.WriteLine("\n\t Registrerings nummret måste vara 6 karaktärer"
+                        + "\n\t Ange registrering 3 bokstäver A-Ö och 3 siffror 0-9 i följd");
+                    }
+                    else
+                    {
+                        Console.WriteLine("din bil med registreringsnummer " + registreringsNummer + " är nu registrerad");
+                    }
+
+                    Console.WriteLine("\n\t Ange tillverkare");
+                    Console.Write("\t * ");
+                    tillverkare = Console.ReadLine().ToUpper();
+
+                    Console.WriteLine("Bilen är tillverkad av " + tillverkare);
+
+                    Console.WriteLine("\n\t Ange tillverknings år");
+                    årtal = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine("\t Tillverknings år på bilen är " + årtal);
 
 
+                    string input = "";
+                    string inputBesiktning = "";
+                    Console.WriteLine("\t Är bilen besiktad? J för Ja / N för Nej");
+                    input = Console.ReadLine().ToUpper();
 
+                    if (input == "J")
+                    {
+                        besiktad = true;
+                        inputBesiktning = "Besiktad";
+                    }
+                    else if (input == "N")
+                    {
+                        besiktad = false;
+                        inputBesiktning = "Obesiktad";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Du måste välja J för Ja eller N för Nej");
+                    }
+                    Console.WriteLine("Bilen är  " + inputBesiktning);
 
+                    // Skapar en ny bil med egenskaper och lägger till i bil registret
+                    Bil nyBil = new Bil(registreringsNummer, tillverkare, årtal, besiktad);
+                     
+                    bilRegister.Add(nyBil);
+
+                    Console.ReadKey();
+
+                }
+                else if (användarVal == "2")
+                {
+                  if(bilRegister.Count > 0)
+                    {
+                        foreach(Bil bil in bilRegister)
+                        {
+                            Console.WriteLine("\n\t " + bil);
+                        }
+                    }
+                    // om det ej finns bilar, skriver ut ett meddelande
+                    else
+                    {                                                     
+                        Console.WriteLine("\n\t Inga registrerade bilar, Genom att välja alternativ 1 kan du lägga till en ny bil i registret"); 
+                    }
+                    
+                }
+                else if (användarVal == "3")
+                {
+                    Console.WriteLine("\n\t ");
+                }
+                else if (användarVal == "4")
+                {
+                    Console.WriteLine("\n\t Avsluta? tryck på en knapp för att fortsätta");
+                    isActive = false;
+                    //  Console.ReadKey();
+                    //Environment.Exit(0);
+                }
+                else
+                {
+                    Console.WriteLine("\n\t Du måste välja an siffra 1-4");
+                }
+
+            }
 
         }
 
         // Creating the program menu and options
         private static void Meny()
         {
-            bool isActive = true;
-            while (isActive)
-            {
-
+          
             Console.WriteLine("\n\n\t"
               + "\n\t - Roffes bil register -"
               + "\n\t ========================"
@@ -96,85 +192,6 @@ namespace Diagnos_1_Grund
               + "\n\t 3) Alternativ 3 - Skapa bilar"
               + "\n\t 4) Alternativ 4 - Stäng program");
 
-            string användarVal = Console.ReadLine();
-
-            if(användarVal == "1")
-            {
-                Console.Clear();
-                string registreringsNummer = "";                        // Initierar registreringsplåt, tillverkare och besiktad-variablerna
-                string tillverkare = "";
-                int årtal = 0;
-                bool besiktad = false;
-
-                Console.WriteLine("\n\t Registrera ny bil"
-                  + "\n\t Ange registrering 3 bokstäver A-Ö och 3 siffror 0-9 i följd");
-
-                Console.Write("\t  ");
-                registreringsNummer = Console.ReadLine().ToUpper();
-
-                if (registreringsNummer.Length != 6 || registreringsNummer.Length == 0)
-                {
-                    Console.WriteLine("\n\t Registrerings nummret måste vara 6 karaktärer"
-                    + "\n\t Ange registrering 3 bokstäver A-Ö och 3 siffror 0-9 i följd");
-                }  else
-                {
-                    Console.WriteLine("din bil med registreringsnummer " + registreringsNummer + " är nu registrerad");
-                }
-
-                Console.WriteLine("\n\t Ange tillverkare");
-                Console.Write("\t * ");
-                tillverkare = Console.ReadLine().ToUpper();
-
-                Console.WriteLine("Bilen är tillverkad av " + tillverkare);
-
-                Console.WriteLine("\n\t Ange tillverknings år");
-                årtal = int.Parse(Console.ReadLine());
-
-                Console.WriteLine("\t Tillverknings år på bilen är " + årtal);
-
-
-                string input = "";
-                string inputBesiktning = "";
-                Console.WriteLine("\t Är bilen besiktad? J för Ja / N för Nej");
-                input = Console.ReadLine().ToUpper();
-
-                if(input == "J")
-                {
-                    besiktad = true;
-                    inputBesiktning = "Besiktad";
-                } else if (input == "N")
-                {
-                    besiktad = false;
-                    inputBesiktning = "Obesiktad";
-                } else
-                {
-                    Console.WriteLine("Du måste välja J för Ja eller N för Nej");
-                }
-                Console.WriteLine("Bilen är  " + inputBesiktning);
-
-                Console.ReadKey();
-
-            }
-            else if (användarVal == "2")
-            {
-                Console.WriteLine("\n\t ");
-            }
-            else if (användarVal == "3")
-            {
-                Console.WriteLine("\n\t ");
-            }
-            else if (användarVal == "4")
-            {
-                Console.WriteLine("\n\t Avsluta? tryck på en knapp för att fortsätta");
-                    isActive = false;
-                  //  Console.ReadKey();
-                //Environment.Exit(0);
-            }
-            else
-            {
-                Console.WriteLine("\n\t Du måste välja an siffra 1-4");
-            }
-            }
         }
     }
 }
