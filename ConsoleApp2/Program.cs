@@ -74,6 +74,7 @@ namespace Diagnos_1_Grund
             bool isActive = true;
             while (isActive)
             {
+                AppInfo();
                 Meny();
 
                 string användarVal = Console.ReadLine();
@@ -210,10 +211,28 @@ namespace Diagnos_1_Grund
 
         }
 
+        // app info
+        private static void AppInfo()
+        {
+            // Setting up app vars
+            string appName = "Bil register 2022";
+            string appVersion = "1.0.0";
+            string appAuthor = "Robert Wägar";
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("\n\t {0} \n\t Version {1} \n\t By {2}", appName, appVersion, appAuthor);
+
+            Console.ResetColor();
+        }
+
         // Creating the program menu and options
         private static void Meny()
         {
-          
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+
             Console.WriteLine("\n\n\t"
               + "\n\t - Roffes bilar (register) -"
               + "\n\t ========================"
@@ -223,6 +242,7 @@ namespace Diagnos_1_Grund
               + "\n\t 3) Alternativ 3 - Hämta bilar från register"
               + "\n\t 4) Alternativ 4 - Stäng program");
 
+            Console.ResetColor();
         }
 
         // from MDN and stack 
