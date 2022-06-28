@@ -184,9 +184,13 @@ namespace Diagnos_1_Grund
                     string[] randomTillverkare = new string[] { "Volvo", "Saab", "BMW", "Mercedes", "Toyota", "Ford", "Lada", "Fiat", "Porche" };
                     string valTillverkare = randomTillverkare[nyRandom.Next(0, randomTillverkare.Length)];
 
+
+                    // 
+                    int randomYear = nyRandom.Next(1900, DateTime.Now.Year);
+
                     Console.WriteLine("\n\t Välj antal bilar att hämta ur registret");
 
-                    Console.WriteLine("\n\t\t" + valTillverkare + "\n\t" + randomNum + "\n\t" + randomChar);
+                    Console.WriteLine("\n\t\t" + valTillverkare + "\n\t" + randomNum + "\n\t" + randomChar + "\n\t" + randomYear);
 
 
                 }
