@@ -184,12 +184,12 @@ namespace Diagnos_1_Grund
         {
           
             Console.WriteLine("\n\n\t"
-              + "\n\t - Roffes bil register -"
+              + "\n\t - Roffes bilar (register) -"
               + "\n\t ========================"
               + "\n\t Välj ett alternativ 1, 2, 3 eller 4"
               + "\n\n\t 1) Alternativ 1 - Registrera bil"
-              + "\n\t 2) Alternativ 2 - Dina registrerade bilar"
-              + "\n\t 3) Alternativ 3 - Skapa bilar"
+              + "\n\t 2) Alternativ 2 - Registrerade bilar"
+              + "\n\t 3) Alternativ 3 - Hämta bilar från register"
               + "\n\t 4) Alternativ 4 - Stäng program");
 
         }
