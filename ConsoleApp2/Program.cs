@@ -46,11 +46,24 @@ namespace Diagnos_1_Grund
 
             Bil bil2 = new Bil("XYZ789", "Toyota", 1987, true);
 
-            Console.WriteLine(bil1);
+           // Console.WriteLine(bil1);
 
             bil1.Årtal = 1997;
 
-            Console.WriteLine(bil1 + "\n" + bil2);
+           // Console.WriteLine(bil1 + "\n" + bil2);
+
+            // för att få ut äldsta bilen av det 2
+            // om man vill ha nyare bilen så kan man välja utkommenterade if statement
+            if (bil1.Årtal < bil2.Årtal) // Äldsta bilen
+
+               // if (bil1.Årtal > bil2.Årtal) // Nyaste bilen
+                {
+                Console.WriteLine(bil1);
+              }
+                else
+              {
+                Console.WriteLine(bil2);
+              }
 
             Console.ReadKey();
         }
