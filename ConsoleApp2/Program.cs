@@ -164,9 +164,31 @@ namespace Diagnos_1_Grund
                     }
                     
                 }
+
+                // hämta slumpmässigt valda bilar ur register
+
+                // skapa slumpmässigt valda bokstäver
+                // slumpmässigt nummer
+                // slumpmässigt valda tillverkare, skapa array med tillverkare
+                // slumpmässigt valt år
+                // slumpmässigt vald besiktning, besiktad eller obesiktad
+
                 else if (användarVal == "3")
                 {
-                    Console.WriteLine("\n\t ");
+
+
+                    Random nyRandom = new Random();
+                    int randomNum = nyRandom.Next(0, 10);
+
+                    char randomChar = GetLetter();
+                    string[] randomTillverkare = new string[] { "Volvo", "Saab", "BMW", "Mercedes", "Toyota", "Ford", "Lada", "Fiat", "Porche" };
+                    string valTillverkare = randomTillverkare[nyRandom.Next(0, randomTillverkare.Length)];
+
+                    Console.WriteLine("\n\t Välj antal bilar att hämta ur registret");
+
+                    Console.WriteLine("\n\t\t" + valTillverkare + "\n\t" + randomNum + "\n\t" + randomChar);
+
+
                 }
                 else if (användarVal == "4")
                 {
@@ -207,15 +229,6 @@ namespace Diagnos_1_Grund
             Random rand = new Random();
             int num = rand.Next(0, chars.Length);
             return chars.ToUpper()[num];
-        }
-
-        // get a random number from 0-9
-        public static char GetNumber()
-        {
-            string chars = "0123456789";
-            Random rand = new Random();
-            int num = rand.Next(0, chars.Length);
-            return chars[num];
         }
     }
 }
