@@ -2,63 +2,57 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
-namespace BasicClasses
+namespace Diagnos_1_Grund
 {
+
+    class Bil
+    {
+        public string RegistreringsNummer;  // Här sparas varje bils registreringsnummer
+        public string Tillverkare;          // Här sparas varje bils tillverkare
+        public int Årtal;                   // Här sparas varje bils tillverkningsår
+        public bool Besiktad;               // Här sparas information huruvida bilen är besiktad
+
+        public Bil(string _registrering, string _tillverkare, int _årtal, bool _besiktad) // Här startar bilens konstruktor
+        {
+            RegistreringsNummer = _registrering;          // Mottaget registreringsnummer tilldelas till objektets registreringsnummer
+            Tillverkare = _tillverkare;                   // Mottaget tillverkare tilldelas till objektets tillverkare
+            Årtal = _årtal;                               // Mottaget årtal tilldelas till objektets årtal
+            Besiktad = _besiktad;                         // Mottagen besiktningsinformation tilldelas till objektets besiktning
+        }
+
+        public override string ToString() // Här börjar Bilklassens ToString. Dess standardiserade utskrift
+        {
+            if (Besiktad)                                                // En utskrift om bilen är besiktad
+
+                return "\n\t\t" + Tillverkare + " (" + Årtal + ")"
+                + "\n\t\t" + RegistreringsNummer
+                + "\n\t\tBesiktad";
+
+            else
+                // En utskrift om bilen är obesiktad
+                return "\n\t\t" + Tillverkare + " (" + Årtal + ")"
+                + "\n\t\t" + RegistreringsNummer
+                + "\n\t\tObesiktad";
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            Car myCar = new Car();
-            myCar.Make = "OldsMobile";
-            myCar.Model = "Cutlas Supreme";
-            myCar.Year = 1991;
-            myCar.Color = "Black";
+            Bil bil1 = new Bil("ABC123", "Volvo", 1991, false);
 
+            Bil bil2 = new Bil("XYZ789", "Toyota", 1987, true);
 
-            // make a new car with myCar properties / values
-            Car myOtherCar;
-            myOtherCar = myCar;
-                        
+            Console.WriteLine(bil1);
 
-           // Console.WriteLine( "{0},{1},{2},{3}", myCar.Make, myCar.Model, myCar.Year, myCar.Color);
-            Console.WriteLine("{0},{1},{2},{3}", myOtherCar.Make, myOtherCar.Model, myOtherCar.Year, myOtherCar.Color);
-            // decimal value = DetermineMarketValue(myCar);
+            bil1.Årtal = 1997;
 
+            Console.WriteLine(bil1 + "\n" + bil2);
 
-            // Change the object properties, values color and year
-
-            myOtherCar.Year = 1986;
-            myOtherCar.Color = "Yellow";
-            Console.WriteLine("{0},{1},{2},{3}", myOtherCar.Make, myOtherCar.Model, myOtherCar.Year, myOtherCar.Color);
-
-            Console.WriteLine("{0:C}", myCar.DetermineMarketValue());
             Console.ReadKey();
-        }
-
-        
-    }
-
-    class Car
-    {
-        public string Make { get; set;  }
-        public string Model { get; set; }
-        public int Year { get; set; }
-        public string Color { get; set; }
-
-        public decimal DetermineMarketValue()
-        {
-            decimal carValue;
-            if (Year > 1990)
-
-                carValue = 8000.0M;
-
-            else
-
-                carValue = 3000.0M;
-
-            return carValue;
         }
     }
 }
