@@ -42,30 +42,139 @@ namespace Diagnos_1_Grund
     {
         static void Main(string[] args)
         {
-            Bil bil1 = new Bil("ABC123", "Volvo", 1991, false);
 
-            Bil bil2 = new Bil("XYZ789", "Toyota", 1987, true);
+            // Övning 1 bilar
+            /* Bil bil1 = new Bil("ABC123", "Volvo", 1991, false);
+             Bil bil2 = new Bil("XYZ789", "Toyota", 1987, true);
 
-           // Console.WriteLine(bil1);
+             Console.WriteLine(bil1);
 
-            bil1.Årtal = 1997;
+             bil1.Årtal = 1997;
 
-           // Console.WriteLine(bil1 + "\n" + bil2);
+             Console.WriteLine(bil1 + "\n" + bil2);
 
-            // för att få ut äldsta bilen av det 2
-            // om man vill ha nyare bilen så kan man välja utkommenterade if statement
-            if (bil1.Årtal < bil2.Årtal) // Äldsta bilen
+             // för att få ut äldsta bilen av det 2
+             // om man vill ha nyare bilen så kan man välja utkommenterade if statement
+             if (bil1.Årtal < bil2.Årtal) // Äldsta bilen
+                // if (bil1.Årtal > bil2.Årtal) // Nyaste bilen
+                 {
+                 Console.WriteLine(bil1);
+               }
+                 else
+               {
+                 Console.WriteLine(bil2);
+               }
 
-               // if (bil1.Årtal > bil2.Årtal) // Nyaste bilen
+             Console.ReadKey();
+             */
+           
+            List<Bil> bilRegister = new List<Bil>();
+
+            // Meny för program
+            Meny();
+           
+
+
+
+
+
+        }
+
+        // Creating the program menu and options
+        private static void Meny()
+        {
+            bool isActive = true;
+            while (isActive)
+            {
+
+            Console.WriteLine("\n\n\t"
+              + "\n\t - Roffes bil register -"
+              + "\n\t ========================"
+              + "\n\t Välj ett alternativ 1, 2, 3 eller 4"
+              + "\n\n\t 1) Alternativ 1 - Registrera bil"
+              + "\n\t 2) Alternativ 2 - Dina registrerade bilar"
+              + "\n\t 3) Alternativ 3 - Skapa bilar"
+              + "\n\t 4) Alternativ 4 - Stäng program");
+
+            string användarVal = Console.ReadLine();
+
+            if(användarVal == "1")
+            {
+                Console.Clear();
+                string registreringsNummer = "";                        // Initierar registreringsplåt, tillverkare och besiktad-variablerna
+                string tillverkare = "";
+                int årtal = 0;
+                bool besiktad = false;
+
+                Console.WriteLine("\n\t Registrera ny bil"
+                  + "\n\t Ange registrering 3 bokstäver A-Ö och 3 siffror 0-9 i följd");
+
+                Console.Write("\t  ");
+                registreringsNummer = Console.ReadLine().ToUpper();
+
+                if (registreringsNummer.Length != 6 || registreringsNummer.Length == 0)
                 {
-                Console.WriteLine(bil1);
-              }
-                else
-              {
-                Console.WriteLine(bil2);
-              }
+                    Console.WriteLine("\n\t Registrerings nummret måste vara 6 karaktärer"
+                    + "\n\t Ange registrering 3 bokstäver A-Ö och 3 siffror 0-9 i följd");
+                }  else
+                {
+                    Console.WriteLine("din bil med registreringsnummer " + registreringsNummer + " är nu registrerad");
+                }
 
-            Console.ReadKey();
+                Console.WriteLine("\n\t Ange tillverkare");
+                Console.Write("\t * ");
+                tillverkare = Console.ReadLine().ToUpper();
+
+                Console.WriteLine("Bilen är tillverkad av " + tillverkare);
+
+                Console.WriteLine("\n\t Ange tillverknings år");
+                årtal = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("\t Tillverknings år på bilen är " + årtal);
+
+
+                string input = "";
+                string inputBesiktning = "";
+                Console.WriteLine("\t Är bilen besiktad? J för Ja / N för Nej");
+                input = Console.ReadLine().ToUpper();
+
+                if(input == "J")
+                {
+                    besiktad = true;
+                    inputBesiktning = "Besiktad";
+                } else if (input == "N")
+                {
+                    besiktad = false;
+                    inputBesiktning = "Obesiktad";
+                } else
+                {
+                    Console.WriteLine("Du måste välja J för Ja eller N för Nej");
+                }
+                Console.WriteLine("Bilen är  " + inputBesiktning);
+
+                Console.ReadKey();
+
+            }
+            else if (användarVal == "2")
+            {
+                Console.WriteLine("\n\t ");
+            }
+            else if (användarVal == "3")
+            {
+                Console.WriteLine("\n\t ");
+            }
+            else if (användarVal == "4")
+            {
+                Console.WriteLine("\n\t Avsluta? tryck på en knapp för att fortsätta");
+                    isActive = false;
+                  //  Console.ReadKey();
+                //Environment.Exit(0);
+            }
+            else
+            {
+                Console.WriteLine("\n\t Du måste välja an siffra 1-4");
+            }
+            }
         }
     }
 }
