@@ -77,6 +77,7 @@ namespace Diagnos_1_Grund
                 AppInfo();
                 Meny();
 
+                Console.WriteLine("\n\t ");
                 string användarVal = Console.ReadLine();
 
                 if (användarVal == "1")
@@ -100,16 +101,17 @@ namespace Diagnos_1_Grund
                     }
                     else
                     {
-                        Console.WriteLine("din bil med registreringsnummer " + registreringsNummer + " är nu registrerad");
+                        Console.WriteLine("\n\t din bil med registreringsnummer " + registreringsNummer + " är nu registrerad");
                     }
 
                     Console.WriteLine("\n\t Ange tillverkare");
-                    Console.Write("\t * ");
+                    Console.Write("\t  ");
                     tillverkare = Console.ReadLine().ToUpper();
 
-                    Console.WriteLine("Bilen är tillverkad av " + tillverkare);
+                    Console.WriteLine("\n\t Bilen är tillverkad av " + tillverkare);
 
                     Console.WriteLine("\n\t Ange tillverknings år");
+                    Console.Write("\t  ");
                     årtal = int.Parse(Console.ReadLine());
 
                     Console.WriteLine("\t Tillverknings år på bilen är " + årtal);
@@ -117,7 +119,9 @@ namespace Diagnos_1_Grund
 
                     string input = "";
                     string inputBesiktning = "";
-                    Console.WriteLine("\t Är bilen besiktad? J för Ja / N för Nej");
+                    Console.WriteLine("\n\t Är bilen besiktad? J för Ja / N för Nej");
+
+                    Console.Write("\t  ");
                     input = Console.ReadLine().ToUpper();
 
                     if (input == "J")
@@ -132,31 +136,39 @@ namespace Diagnos_1_Grund
                     }
                     else
                     {
-                        Console.WriteLine("Du måste välja J för Ja eller N för Nej");
+                        Console.WriteLine("\n\t Du måste välja J för Ja eller N för Nej");
                     }
-                    Console.WriteLine("Bilen är  " + inputBesiktning);
+                    Console.WriteLine("\n\t Bilen är  " + inputBesiktning);
 
                     // Skapar en ny bil med egenskaper och lägger till i bil registret
                     Bil nyBil = new Bil(registreringsNummer, tillverkare, årtal, besiktad);
                      
                     bilRegister.Add(nyBil);
 
-                    Console.WriteLine("\n\n\t\t Tryck på valfri knapp för att fortsätta");
+                    Console.WriteLine("\n\t Tryck på valfri knapp för att fortsätta");
+                    Console.Write("\t  ");
                     Console.ReadKey();
 
                 }
 
+                // =========================================
                 // se bilar i registret, lista  med bilar
+                // =========================================
+
                 else if (användarVal == "2")
                 {
                   if(bilRegister.Count > 0)
                     {
+                        Console.WriteLine("\n\t Registrerade bilar: ");
                         foreach(Bil bil in bilRegister)
                         {
-                            Console.WriteLine("\n\t " + bil + "\n\n " 
-                                + "\n\t\t Tryck på valfri knapp för att fortsätta" );
-                            Console.ReadKey();
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.WriteLine("\n\t " + bil + "\n ");
+                            Console.ResetColor();
                         }
+                        Console.WriteLine("\n\t\t Tryck på valfri knapp för att fortsätta");
+                        Console.Write("\t  ");
+                        Console.ReadKey();
                     }
                     // om det ej finns bilar, skriver ut ett meddelande
                     else
